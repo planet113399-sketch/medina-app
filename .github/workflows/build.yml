@@ -17,13 +17,20 @@ jobs:
         with:
           python-version: "3.10"
 
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+
       - name: Install Flet CLI
         run: |
           pip install "flet[all]"
 
       - name: Build APK
+        env:
+          CI: true
         run: |
-          flet build apk -y
+          flet build apk
 
       - name: Upload APK Artifact
         uses: actions/upload-artifact@v4
