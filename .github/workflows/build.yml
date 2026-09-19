@@ -27,10 +27,8 @@ jobs:
           pip install "flet[all]"
 
       - name: Build APK
-        env:
-          CI: true
         run: |
-          flet build apk
+          yes | flet build apk
 
       - name: Upload APK Artifact
         uses: actions/upload-artifact@v4
